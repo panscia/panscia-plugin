@@ -83,8 +83,16 @@ with no redistribution, no publishing and no training. It is priced at a
 fixed multiple of the file's price and offered only where the listing's
 `licences.retained` is set. Ask for it with `licence_asset` and
 `scope: "retained"` before paying; a single-task invoice cannot be upgraded.
-Training a model on anything from the network — a listing, a passage, an
-answer, a file — is licensed under no scope, ever.
+Media may also offer the *embed* scope: show a photograph, image or
+recording inside one identified published work — an article, an episode, a
+deck — with attribution and a machine-readable training reservation where
+it appears. A photograph cannot be paraphrased; using it means showing it,
+and single-task does not allow that. A second work is a second licence.
+Offered only where `licences.embed` is set; ask with `scope: "embed"`.
+Images arrive with the owner's rights and a do-not-train flag written into
+their metadata — leave it in. Training a model on anything from the
+network — a listing, a passage, an answer, a file — is licensed under no
+scope, ever.
 
 Choosing: need the *fact* — answer. Need the *wording* — passages. Need the
 *material* — license. Unsure the file holds what the task needs — one
@@ -199,6 +207,6 @@ not what you hoped for. A report is a legal signal, not a review.
 | `list_nodes` | free | See who is on the network |
 | `preview_asset` | free | Description or thumbnail before buying |
 | `ask_asset` | paid | Passages from one node that bear on a question; sessions for many questions |
-| `licence_asset` | paid | Licence the original file for the current task (`scope: "retained"` to keep it, where offered) — only after the person agreed to the price |
+| `licence_asset` | paid | Licence the original file for the current task (`scope: "retained"` to keep it, `scope: "embed"` to show media in one published work, where offered) — only after the person agreed to the price |
 | `download_asset` | paid | Retrieve it with L402 credentials |
 | `report_node` | free | Misrepresented **and** apparently illegal content |
