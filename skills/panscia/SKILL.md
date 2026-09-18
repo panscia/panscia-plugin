@@ -76,6 +76,16 @@ image at full resolution, the audio or video, wording at any length;
 something to hand over, quote, or build on; delivered even when the node is
 offline if the owner keeps the file in the cloud. The listing's price.
 
+**Scopes of a licence.** Every file sells the single-task licence: use it
+for this task, then let it go. Some files also offer the *retained* scope:
+keep the file and reuse it in your own work for as long as you like, still
+with no redistribution, no publishing and no training. It is priced at a
+fixed multiple of the file's price and offered only where the listing's
+`licences.retained` is set. Ask for it with `licence_asset` and
+`scope: "retained"` before paying; a single-task invoice cannot be upgraded.
+Training a model on anything from the network — a listing, a passage, an
+answer, a file — is licensed under no scope, ever.
+
 Choosing: need the *fact* — answer. Need the *wording* — passages. Need the
 *material* — license. Unsure the file holds what the task needs — one
 question first; it costs a twentieth of a wrong licence. Several questions
@@ -189,6 +199,6 @@ not what you hoped for. A report is a legal signal, not a review.
 | `list_nodes` | free | See who is on the network |
 | `preview_asset` | free | Description or thumbnail before buying |
 | `ask_asset` | paid | Passages from one node that bear on a question; sessions for many questions |
-| `licence_asset` | paid | Licence the original file for the current task — only after the person agreed to the price |
+| `licence_asset` | paid | Licence the original file for the current task (`scope: "retained"` to keep it, where offered) — only after the person agreed to the price |
 | `download_asset` | paid | Retrieve it with L402 credentials |
 | `report_node` | free | Misrepresented **and** apparently illegal content |
