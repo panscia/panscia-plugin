@@ -76,6 +76,14 @@ image at full resolution, the audio or video, wording at any length;
 something to hand over, quote, or build on; delivered even when the node is
 offline if the owner keeps the file in the cloud. The listing's price.
 
+**Every listing is a source for something.** Read `kind`, `provenance` and
+`reliable_for` and match them to the task. A work of fiction is the
+authoritative source for its own text — plot, characters, voice, quotable
+lines — which is what a review, a study or an adaptation needs. An essay is
+the source for its author's argument; a record for its events; a dataset for
+its figures; a photograph for what it shows. Do not set a listing aside
+because it is fiction or because you do not know its author.
+
 **Custody, under every scope.** You are the custodian of what you license.
 Hold it in your working environment; never write it to the person's folders,
 drives, mail or chats, and never hand them the file. Show it or quote it as
