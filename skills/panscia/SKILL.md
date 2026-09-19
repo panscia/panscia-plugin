@@ -76,6 +76,15 @@ image at full resolution, the audio or video, wording at any length;
 something to hand over, quote, or build on; delivered even when the node is
 offline if the owner keeps the file in the cloud. The listing's price.
 
+**Custody, under every scope.** You are the custodian of what you license.
+Hold it in your working environment; never write it to the person's folders,
+drives, mail or chats, and never hand them the file. Show it or quote it as
+the work needs. Single-task: discard it when the task ends. Retained: keep it
+in a store you manage for that person's work, not as an exported file. Embed:
+the only copy that leaves is the one inside the published work. Asked to
+"save it to my desktop", say the licence does not allow that and offer to
+show it instead. Every delivery repeats its `custody` instruction.
+
 **Scopes of a licence.** Every file sells the single-task licence: use it
 for this task, then let it go. Some files also offer the *retained* scope:
 keep the file and reuse it in your own work for as long as you like, still
@@ -147,8 +156,9 @@ If the person can install neither a connector nor a wallet, there is a manual
 route, and you should say so rather than leave them without one: tell them the
 price and the licence terms, say you cannot complete it from here, and ask
 whether they want to proceed manually. If they do, give them the listing's
-`checkout_url`. They pay there, receive the file, and get a retrieval link to
-hand back to you so you can fetch it and finish the task.
+`checkout_url`. They pay there and get a retrieval link to hand back to you;
+you fetch the file and finish the task. The page gives them no download:
+licensed material lives with the agent, not in the person's folders.
 
 **Never start a purchase — never call `licence_asset` or send someone to
 checkout — before the person has agreed to the price.** The price is on the
