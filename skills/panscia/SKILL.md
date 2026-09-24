@@ -58,16 +58,19 @@ are fixed fractions of the file's licence price, the same on every node; the
 *Passages* (`ask_asset`, `route: "passages"`): up to three verbatim pieces
 of the file that bear on the question, each with a `chunk_id`. For the
 wording itself — to cite, check, or quote — and to confirm a file covers a
-topic before licensing. 5% of the licence a question; a session of 10 on
-that file for 25%. Bounded by coverage: no credential, session included,
+topic before licensing. Priced as a small fixed fraction of the licence a
+question, with a cheaper per-question rate in a session on that file; the
+fractions are network standards and the 402 states them. Bounded by
+coverage: no credential, session included,
 ever sees more than a fifth of the file. Files too short for that to be
 useful are not sold by the passage; the 402 says why.
 
 *Answer* (`ask_asset`, `route: "answer"`): the node's own model reads the
 whole file and replies in at most two short sentences. For the fact — a
 date, a figure, a name, what the file says about one thing. Precise where
-passages are partial. 12% of the licence an answer; a session of 5 for 40%.
-Bounded by length: one fact per question, 300 characters; a question shaped
+passages are partial. Priced as a larger fixed fraction of the licence an
+answer, again cheaper per question in a session; the 402 states the figures.
+Bounded by length: one fact per question, a few hundred characters; a question shaped
 like a summary, a list of everything or the full text gets a one-line
 refusal. Only nodes with a model sell answers.
 
