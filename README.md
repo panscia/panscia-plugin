@@ -34,8 +34,13 @@ directory installs everywhere without a build step.
 
 **Claude Code**
 ```
-claude --plugin-dir ./panscia-plugin        # try it
-/plugin install panscia                      # from a marketplace
+/plugin marketplace add panscia/panscia-plugin
+/plugin install panscia@panscia
+```
+To try a local checkout instead: `claude --plugin-dir ./panscia-plugin`.
+Connection only, without the skill:
+```
+claude mcp add --transport http panscia https://panscia.com/network/mcp
 ```
 
 **Any Agent Plugins 1.0 client** (VS Code, Cursor, Copilot, Codex, Kiro) — follow
