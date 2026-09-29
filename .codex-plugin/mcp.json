@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "panscia-network": {
+      "type": "http",
+      "url": "https://panscia.com/network/mcp"
+    }
+  }
+}

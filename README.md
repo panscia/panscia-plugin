@@ -43,6 +43,13 @@ Connection only, without the skill:
 claude mcp add --transport http panscia https://panscia.com/network/mcp
 ```
 
+**ChatGPT app / Codex** — Settings, Plugins, Add, then either:
+- *Add a marketplace*: source `panscia/panscia-plugin`, ref `main`, no sparse
+  paths. Then install Panscia from the Plugins tab. You get the connection and
+  the skill.
+- *Add MCP server*: name `Panscia`, type Streamable HTTP, address
+  `https://panscia.com/network/mcp`. Connection only.
+
 **Any Agent Plugins 1.0 client** (VS Code, Cursor, Copilot, Codex, Kiro) — follow
 that client's plugin install flow and point it at this directory or its
 repository.

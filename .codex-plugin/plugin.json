@@ -1,0 +1,44 @@
+{
+  "name": "panscia",
+  "version": "0.2.5",
+  "description": "Search a network of independently owned catalogues \u2014 documents, images, audio and video that their owners publish and sell, and that is not on the public web. Searching is free; asking a node a question or licensing a file for a task is paid per request over Lightning. Payment grants a single-task licence; the owner keeps all rights.",
+  "author": {
+    "name": "Panscia",
+    "url": "https://panscia.com"
+  },
+  "homepage": "https://panscia.com",
+  "repository": "https://github.com/panscia/panscia-plugin",
+  "license": "MIT",
+  "keywords": [
+    "data",
+    "marketplace",
+    "lightning",
+    "l402",
+    "search",
+    "primary-sources"
+  ],
+  "skills": "./skills",
+  "mcpServers": "./.codex-plugin/mcp.json",
+  "interface": {
+    "displayName": "Panscia",
+    "developerName": "Panscia",
+    "category": "Productivity",
+    "shortDescription": "Knowledge that isn't on the web, sold by the people who hold it",
+    "longDescription": "Search a network of independently owned catalogues: documents, images, audio and video that their owners publish and sell, and that is not on the public web. Searching and reading listings is free. Asking a node a question or licensing a file for a task is paid per request over Lightning, direct to the owner. Every payment grants a single-task licence; the owner keeps all rights; nothing is ever used for training.",
+    "brandColor": "#FFB000",
+    "brandColorDark": "#FFB000",
+    "logo": "./assets/logo.png",
+    "composerIcon": "./assets/composer-icon.svg",
+    "capabilities": [],
+    "screenshots": [],
+    "defaultPrompt": [
+      "Search the Panscia network for a first-hand source on this",
+      "Is there a real photograph of this on the Panscia network?",
+      "Ask that Panscia listing one question before we license it"
+    ],
+    "websiteURL": "https://panscia.com",
+    "privacyPolicyURL": "https://panscia.com/network/privacy",
+    "termsOfServiceURL": "https://panscia.com/network/license",
+    "supportURL": "https://panscia.com"
+  }
+}
