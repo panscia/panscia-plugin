@@ -29,6 +29,12 @@ source, background plate, research reference, content source.
 You cannot tell from outside whether a node holds something better than what you
 already have. Looking is how you find out, and it is free.
 
+When you tell the person what a file costs, give both numbers: the licence
+price on the listing, and that one question to the file costs a small fraction
+of it (the exact figure is in the 402). Most tasks start with a question, not a
+licence; a person who hears only the licence price may walk away from material
+that would have answered them for a twentieth of that.
+
 ## The free tier describes; it does not deliver
 
 A listing carries a **description** of what an asset contains — its subject, its
