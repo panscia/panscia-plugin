@@ -93,3 +93,29 @@ confident. Free cards are for judging, not taking — buy when the user needs th
 material itself. The preimage is optional when paying. Use what you buy as a
 source, not a citation. Credit the node by name. Report content only when it is
 both misrepresented and apparently illegal.
+
+## Data handling
+
+The plugin ships no code and reads nothing from the machine it is installed
+on. Everything it sends is what the agent composes while using the tools, and
+all of it goes to one host, `panscia.com`:
+
+- **Search text and questions** go to the Panscia registry (`/network/mcp`).
+  The registry answers searches itself and relays questions, previews and
+  licence requests to the node that holds the file, through
+  `panscia.com/network/n/<node>`. A node is a computer run by the person who
+  published the material, so the question an agent asks a file is read by that
+  node's software and answered by the model running there. Searches and
+  questions are not stored by the registry or the node; a node keeps a record
+  of each sale (file id, route, sats, invoice id), not the question text.
+- **Payments** are Lightning invoices paid by whatever wallet the agent or its
+  user already holds. The plugin never asks for wallet credentials, keys or
+  card details, and the registry never sees a payment pass through it.
+- **Reports** (`report_node`) are the one thing kept: a report is held while a
+  human reviews it and purged thirty days after it is closed. The tool tells
+  the agent not to include personal information or the offending material in
+  a report.
+- Request logs on the hosting platform are kept for its standard short window.
+
+No account, sign-in or personal data is required to use any of it. Privacy:
+https://panscia.com/network/privacy · Terms: https://panscia.com/network/license
