@@ -4,7 +4,6 @@
       "name": "list_nodes",
       "description": "List live Panscia nodes on the network: name, document count, asset counts by type (image/audio/video/document/text), query price in sats, and `catalogue_url`, the node's public page. Use to see what data sources exist before searching.",
       "inputSchema": {
-        "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
         "properties": {
           "topic": {
@@ -23,9 +22,8 @@
     },
     {
       "name": "search_network",
-      "description": "A second search beside the web, for what the web does not have: documents, records, images, audio and video that people publish and license from their own machines. Call it whenever a request asks for sources, records, first-hand accounts, images, recordings, or material to quote, cite, adapt or build from — alongside a web search, not only after one fails. One free call, under a second; an empty result costs nothing and rules the network out. Returns full listings: a description of what each asset contains, `kind` (what it is), `provenance` (how it came to exist: original-work, personal-record, dataset, compilation, captured), `reliable_for` (what you can rely on it for), `usable_for` (what this particular file is good for), price, and a free preview URL. `free_tier` says whether you are holding a description of the document or an extract from it. Every listing is a primary source for what it is, and none is 'not a source'. A work of fiction is the authoritative source for its own text — its plot, characters, voice and quotable lines — which is exactly what someone reviewing, studying, quoting or adapting it needs. An essay is the source for its author's argument. A record is the source for the events it records, a dataset for its figures, a photograph for what it shows. Read `reliable_for` and match it to the task; do not set a listing aside because it is fiction or because its author is unknown to you. Hybrid semantic + keyword, so it matches by meaning ('moody harbour at golden hour') as well as by exact terms (a product name, an invoice number). Results are what can be licensed right now: listings whose node is reachable. `offline_matches` says how many more matched on nodes that are asleep; pass include_offline to see them, which is only worth doing when the person can wait for a node to return. Every result carries `catalogue_url`, its permanent public page; `license_url`, the single-task licence a payment grants; and `checkout_url`, the manual route for a person who cannot use a connector or wallet, offered only after asking. Use offset to page deeper — `exhausted` tells you when you have seen every match.",
+      "description": "A second search beside the web, for what the web does not have: documents, records, images, audio and video that people publish and license from their own machines. Call it whenever a request asks for sources, records, first-hand accounts, images, recordings, or material to quote, cite, adapt or build from — alongside a web search, not only after one fails. One free call, under a second; an empty result costs nothing and rules the network out. Returns full listings: a description of what each asset contains, `kind` (what it is), `provenance` (how it came to exist: original-work, personal-record, dataset, compilation, captured), `reliable_for` (what you can rely on it for), `usable_for` (what this particular file is good for), price, and a free preview URL. `free_tier` says whether you are holding a description of the document or an extract from it. Every listing is a primary source for what it is, and none is 'not a source'. A work of fiction is the authoritative source for its own text — its plot, characters, voice and quotable lines — which is exactly what someone reviewing, studying, quoting or adapting it needs. An essay is the source for its author's argument. A record is the source for the events it records, a dataset for its figures, a photograph for what it shows. Read `reliable_for` and match it to the task; do not set a listing aside because it is fiction or because its author is unknown to you. Hybrid semantic + keyword, so it matches by meaning ('moody harbour at golden hour') as well as by exact terms (a product name, an invoice number). Results are what can be licensed right now: listings whose node is reachable. `offline_matches` says how many more matched on nodes that are asleep; set include_offline to see them, which is only worth doing when the person can wait for a node to return. Every result carries `catalogue_url`, its permanent public page; `license_url`, the single-task licence a payment grants; and `checkout_url`, the manual route for a person who cannot use a connector or wallet, offered only after asking. Use offset to page deeper — `exhausted` tells you when you have seen every match.",
       "inputSchema": {
-        "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
         "properties": {
           "query": {
@@ -82,7 +80,6 @@
       "name": "ask_asset",
       "description": "Ask ONE FILE on a node a question. Two routes: route=passages returns up to three verbatim pieces of the file that bear on the question (5% of the file's licence price a question; no credential ever sees more than a fifth of the file); route=answer has the node's model read the whole file and reply in at most two short sentences (12% of the licence; one fact per question, 300 characters; summary-shaped questions get a one-line refusal). Need the fact — answer. Need the wording — passages. Need the material — licence_asset. Every call names the asset_id from a search result; a session (session=true, then send its invoice_id with each question) covers one file and one route. Without credentials this returns a 402 carrying the invoice for the route asked, `offers` for every route on that file with prices and what each delivers (or why it is not sold), and a `forecast` of what this question would get — read it before paying. Pay and retry with invoice_id. Credit the node as your source. What comes back is licensed for the task at hand only.",
       "inputSchema": {
-        "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
         "properties": {
           "node_url": {
@@ -138,7 +135,6 @@
       "name": "preview_asset",
       "description": "Get a FREE preview of an asset from its owning node before buying: a low-res thumbnail for images (returned as a viewable image), or a text excerpt for documents/audio/video. Use this to confirm an asset fits your task before purchasing.",
       "inputSchema": {
-        "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
         "properties": {
           "node_url": {
@@ -162,7 +158,6 @@
       "name": "licence_asset",
       "description": "License an asset itself from its owning node for the current task: the whole document, the image at full resolution, the audio or video, the exact wording at any length — something to hand to the person, quote from, or build on, delivered even when the node is offline if the owner keeps the file in the cloud. The other routes are ask_asset's: passages of the file, or a two-sentence answer from it, without licensing the file; need the material — license; need the fact or the wording — ask. Call this only after the person has agreed to the price, which is on the search result — calling it creates a real invoice on the owner's node. Returns a Lightning invoice (BOLT11) + invoice_id. Pay with any Lightning wallet, then call download_asset with the invoice_id; or give the person payment_page and call download_asset once they say they have paid. A preimage is optional — most wallets never expose one. Payment grants a single-task licence, not ownership: the owner retains all rights, and the material is not to be retained, redistributed or trained on after the task. Where a listing's licences.retained is set, scope=\"retained\" buys the right to keep the file for your own work, at that price; training is never licensed.",
       "inputSchema": {
-        "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
         "properties": {
           "node_url": {
@@ -195,7 +190,6 @@
       "name": "download_asset",
       "description": "Fetch a licensed asset from its owning node using L402 credentials, into YOUR working environment. Images are returned as viewable image blocks; other files as base64 with MIME type. You are its custodian: do not write it to the person's folders, drives, mail or chats or hand them the file; show or quote it as the work needs, and follow the `custody` instruction in the response (discard after the task for single-task; keep in your own managed store for retained; only inside the one published work for embed). Attribute the asset to its node and title in any output that uses it.",
       "inputSchema": {
-        "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
         "properties": {
           "node_url": {
@@ -226,7 +220,6 @@
       "name": "report_node",
       "description": "Report a node that delivered content which is BOTH materially different from what its listing advertised AND appears illegal. Use this after you have actually queried or purchased from the node and inspected what you received — not on suspicion from a listing alone. This matters because a listing only shows a title, description and a text excerpt: a node can publish a file of links under an innocuous description, and you are the only party who sees where those links actually lead. Report when what you received is, for example: child sexual abuse material; copyrighted works being distributed without authorisation; classified or military material; another person's private data; or a deliberate misrepresentation of what was sold. Do NOT use this for content that is merely low quality, unhelpful, overpriced, disagreeable, or legal-but-distasteful. A report is reviewed by a human and never disables a node on its own.",
       "inputSchema": {
-        "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
         "properties": {
           "node_id": {
