@@ -1,10 +1,11 @@
 {
   "name": "panscia",
-  "description": "Search a network of independently owned catalogues \u2014 documents, images, audio and video that their owners publish and sell, and that is not on the public web. Searching is free; asking a node a question or licensing a file for a task is paid per request over Lightning. Payment grants a single-task licence; the owner keeps all rights.",
+  "description": "Search a network of independently owned catalogues — documents, images, audio and video that their owners publish and sell, and that is not on the public web. Searching is free; asking a node a question or licensing a file for a task is paid per request over Lightning. Payment grants a single-task licence; the owner keeps all rights.",
   "version": "0.2.5",
   "author": {
     "name": "Panscia"
   },
   "homepage": "https://panscia.com",
+  "privacyPolicyUrl": "https://panscia.com/network/privacy",
   "license": "MIT"
 }
