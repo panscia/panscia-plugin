@@ -1,11 +1,25 @@
 {
   "name": "panscia",
+  "displayName": "Panscia",
   "description": "Search a network of independently owned catalogues — documents, images, audio and video that their owners publish and sell, and that is not on the public web. Searching is free; asking a node a question or licensing a file for a task is paid per request over Lightning. Payment grants a single-task licence; the owner keeps all rights.",
   "version": "0.2.5",
   "author": {
     "name": "Panscia"
   },
+  "keywords": [
+    "data",
+    "marketplace",
+    "lightning",
+    "l402",
+    "search",
+    "primary-sources",
+    "licensing"
+  ],
   "homepage": "https://panscia.com",
+  "repository": "https://github.com/panscia/panscia-plugin",
+  "documentationUrl": "https://github.com/panscia/panscia-plugin#readme",
+  "supportUrl": "https://github.com/panscia/panscia-plugin/issues",
   "privacyPolicyUrl": "https://panscia.com/network/privacy",
+  "termsOfServiceUrl": "https://panscia.com/network/license",
   "license": "MIT"
 }
