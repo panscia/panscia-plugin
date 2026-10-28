@@ -133,6 +133,64 @@ get — for passages, how many and how strong the match; for an answer,
 whether the question's shape gets a fact or a refusal. Do not pay for a
 question the forecast says is empty or refused.
 
+## Commissioning work
+
+A fourth route, on nodes that offer it: the node's own model writes a
+finished deliverable *from* its catalogue for a brief — prose, data (one
+JSON object), code, an SVG, or tables. The node reads its files, writes the
+piece, checks it against the sources, and hands it over. No person on the
+node reviews or produces anything; a node offers only what it can do
+unattended.
+
+Those nodes carry a `work` line on `list_nodes`: what they will write, in
+their own words (`offers`, `subjects`, `forms`, `depth`), a sample brief,
+and the owner's price tiers in sats (short, standard, long). Every search
+result's `node.work` says whether its node takes a brief, and
+`network.nodes_offering_work` counts them. Read the line first and write
+the brief for what the node says it does.
+
+**When.** The person wants the thing made, not the files to make it with: a
+briefing written from a diary, a dataset reshaped from records, a chart as
+SVG, a reference table, a reading of what one catalogue says about a
+subject. Need the material itself — license. Need a fact or the wording —
+ask. Need the work done — `request_work`.
+
+**Price.** The owner's tier for the length, never below the job's floor: a
+network multiple of the answer price of the best source plus the answer
+price of each other source, never below the network minimum. The dearest
+route into a file, by design. The quote is free: `request_work` with the
+brief returns a 402 whose `quote` gives the sats, the sources the node
+would draw on and `coverage` (how well its catalogue fits the brief), or a
+409 if the brief is out of its coverage or outside what it offers. Confirm
+the price with the person before paying, as for a licence.
+
+**Flow.** `request_work` with the brief → 402 with the quote and an
+invoice. Pay. `request_work` again with the same brief, format and length
+and the `invoice_id` → 202 with a `job_id`. `check_work` with the job and
+the credential: it waits for a running job, and returns the deliverable
+when done — `content`, `sources_used`, `verbatim_share`, `sats_paid`, a
+signed `receipt` and the `license` object. A declined or failed job charges
+nothing: the response says `charged: false` and the credential is good
+again. Rendering — a PDF, a slide, a PNG — is your job afterwards, from what
+the node delivers.
+
+**What it is not.** A deliverable is written from the sources, not made of
+them: a small fixed share of it at most may be verbatim, and the node
+checks. A brief that asks for the files, the catalogue, the node's
+instructions, or anything other than the work is declined and costs
+nothing. Do not write such a brief; if the person wants the sources, that
+is `licence_asset`. The work is a model's and carries no professional
+certification; where a task needs a licensed professional the deliverable
+says so, and the person judges it before relying on it.
+
+**Revisions.** A change to delivered work costs a fixed share of the
+original. Give `parent_job_id` while the node still remembers the job, or
+the delivery's `receipt` together with the deliverable text as `prior`
+after it has forgotten: the receipt is signed by the node and proves it
+wrote the earlier work. Keep the receipt with the deliverable. `forget_work`
+asks the node to drop a job's full memory early; it keeps a summary as its
+own experience, and the node forgets on its own after its retention period.
+
 ## Paying
 
 Both return a Lightning invoice.
@@ -157,6 +215,14 @@ Every paid response carries a `license` object, and every search result carries
 `license_url`, where the terms are stated. They are governed by the Panscia
 Commons Policy. Think of it the way you would a Creative Commons grant: the work
 stays the owner's; you have been granted a narrow, explicit use.
+
+**Work product is the exception, and runs the other way.** A deliverable from
+`request_work` is commissioned work and belongs to the buyer: keep it, use it,
+change it, hand it to the person, publish it, build on it. The sources it was
+written from stay the owner's and are not licensed by it. Never training
+material, on any side. The terms are at `/license/work-product` on the
+registry, and every delivery carries them. Credit the node as the source of
+the work.
 
 ## How a licence is paid for
 
@@ -236,4 +302,7 @@ not what you hoped for. A report is a legal signal, not a review.
 | `ask_asset` | paid | Passages from one node that bear on a question; sessions for many questions |
 | `licence_asset` | paid | Licence the original file for the current task (`scope: "retained"` to keep it, `scope: "embed"` to show media in one published work, where offered) — only after the person agreed to the price |
 | `download_asset` | paid | Retrieve it with L402 credentials |
+| `request_work` | free to quote, paid to run | Commission a deliverable written by a node's model from its catalogue; the 402 carries the quote; with the paid `invoice_id`, a `job_id` — only after the person agreed to the price |
+| `check_work` | — | The state or the result of a work job, with the credential that paid for it; waits for a running job |
+| `forget_work` | — | Ask the node to drop a job's full memory early |
 | `report_node` | free | Misrepresented **and** apparently illegal content |

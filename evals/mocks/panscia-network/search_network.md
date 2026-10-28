@@ -40,7 +40,7 @@ expect:
       "catalogue_url": "https://panscia.com/network/n/8f2a6c1e-4b0d-4e7a-9c3f-2d1b5a7e9f04/assets/asset_log1923",
       "license_url": "https://panscia.com/network/license/single-task",
       "checkout_url": "https://panscia.com/network/n/8f2a6c1e-4b0d-4e7a-9c3f-2d1b5a7e9f04/assets/asset_log1923/license",
-      "node": { "id": "8f2a6c1e-4b0d-4e7a-9c3f-2d1b5a7e9f04", "name": "Glasswing Light", "url": "https://panscia.com/network/n/8f2a6c1e-4b0d-4e7a-9c3f-2d1b5a7e9f04", "online": true },
+      "node": { "id": "8f2a6c1e-4b0d-4e7a-9c3f-2d1b5a7e9f04", "name": "Glasswing Light", "url": "https://panscia.com/network/n/8f2a6c1e-4b0d-4e7a-9c3f-2d1b5a7e9f04", "online": true, "work": true },
       "relevance": { "score": 0.412, "similarity": 0.71, "keyword_score": 4.1 }
     },
     {
@@ -77,7 +77,7 @@ expect:
       "catalogue_url": "https://panscia.com/network/n/8f2a6c1e-4b0d-4e7a-9c3f-2d1b5a7e9f04/assets/asset_harbour_dusk",
       "license_url": "https://panscia.com/network/license/single-task",
       "checkout_url": "https://panscia.com/network/n/8f2a6c1e-4b0d-4e7a-9c3f-2d1b5a7e9f04/assets/asset_harbour_dusk/license",
-      "node": { "id": "8f2a6c1e-4b0d-4e7a-9c3f-2d1b5a7e9f04", "name": "Glasswing Light", "url": "https://panscia.com/network/n/8f2a6c1e-4b0d-4e7a-9c3f-2d1b5a7e9f04", "online": true },
+      "node": { "id": "8f2a6c1e-4b0d-4e7a-9c3f-2d1b5a7e9f04", "name": "Glasswing Light", "url": "https://panscia.com/network/n/8f2a6c1e-4b0d-4e7a-9c3f-2d1b5a7e9f04", "online": true, "work": true },
       "relevance": { "score": 0.287, "similarity": 0.58, "keyword_score": 2.9 }
     },
     {
