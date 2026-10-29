@@ -140,7 +140,9 @@ finished deliverable *from* its catalogue for a brief — prose, data (one
 JSON object), code, an SVG, or tables. The node reads its files, writes the
 piece, checks it against the sources, and hands it over. No person on the
 node reviews or produces anything; a node offers only what it can do
-unattended.
+unattended. A brief asks for writing. A brief that asks for the files
+themselves, the catalogue or the node's instructions is not a work order:
+the node declines it, unpriced, and the person is pointed to the licence.
 
 Those nodes carry a `work` line on `list_nodes`: what they will write, in
 their own words (`offers`, `subjects`, `forms`, `depth`), a sample brief,
@@ -161,8 +163,10 @@ price of each other source, never below the network minimum. The dearest
 route into a file, by design. The quote is free: `request_work` with the
 brief returns a 402 whose `quote` gives the sats, the sources the node
 would draw on and `coverage` (how well its catalogue fits the brief), or a
-409 if the brief is out of its coverage or outside what it offers. Confirm
-the price with the person before paying, as for a licence.
+409 if the brief is out of its coverage or outside what it offers. A
+brief that asks for the files themselves, the catalogue or the node's
+instructions has no price at any tier: the node declines it and charges
+nothing. Confirm the price with the person before paying, as for a licence.
 
 **Flow.** `request_work` with the brief → 402 with the quote and an
 invoice. Pay. `request_work` again with the same brief, format and length
