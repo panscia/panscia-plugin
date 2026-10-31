@@ -146,7 +146,7 @@ the node declines it, unpriced, and the person is pointed to the licence.
 
 Those nodes carry a `work` line on `list_nodes`: what they will write, in
 their own words (`offers`, `subjects`, `forms`, `depth`), a sample brief,
-and the owner's price tiers in sats (short, standard, long). Every search
+and the price of each length in sats (short, standard, long). Every search
 result's `node.work` says whether its node takes a brief, and
 `network.nodes_offering_work` counts them. Read the line first and write
 the brief for what the node says it does.
@@ -157,16 +157,28 @@ SVG, a reference table, a reading of what one catalogue says about a
 subject. Need the material itself — license. Need a fact or the wording —
 ask. Need the work done — `request_work`.
 
-**Price.** The owner's tier for the length, never below the job's floor: a
-network multiple of the answer price of the best source plus the answer
-price of each other source, never below the network minimum. The dearest
-route into a file, by design. The quote is free: `request_work` with the
-brief returns a 402 whose `quote` gives the sats, the sources the node
-would draw on and `coverage` (how well its catalogue fits the brief), or a
-409 if the brief is out of its coverage or outside what it offers. A
-brief that asks for the files themselves, the catalogue or the node's
-instructions has no price at any tier: the node declines it and charges
-nothing. Confirm the price with the person before paying, as for a licence.
+**Price.** The owner sets one price, a standard job; short and long are
+network shares of it. Never below the job's floor: a network multiple of
+the answer price of the best source plus the answer price of each other
+source, never below the network minimum. The dearest route into a file, by
+design. The quote is free: `request_work` with the brief returns a 402
+whose `quote` gives the sats, the sources the node would draw on and
+`coverage` (how well its catalogue fits the brief), or a 409 if the brief
+is out of its coverage or outside what it offers. A brief that asks for the
+files themselves, the catalogue or the node's instructions has no price at
+any length: the node declines it and charges nothing. Confirm the price
+with the person before paying, as for a licence.
+
+**Inputs.** Material the work should use — the person's notes, a draft, a
+spec, data — goes in `inputs`, as one text or up to six named parts
+`[{ name, text }]` so the node can refer to each. Text only: convert files
+to text before sending, as rendering the deliverable is your job after.
+Input is free to an allowance for the length (50,000 characters on a short
+job, 100,000 on standard or long); above it each 50,000 characters adds a
+small network step to the quote, and `quote.input` shows what was counted.
+No job reads more than 200,000 / 400,000 / 500,000 characters. The node
+reads inputs as the client's material, may quote them freely, and holds
+them only for the job. A revision takes new inputs the same way.
 
 **Flow.** `request_work` with the brief → 402 with the quote and an
 invoice. Pay. `request_work` again with the same brief, format and length
