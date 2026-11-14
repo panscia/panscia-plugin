@@ -9,7 +9,7 @@ expect:
   "error": "Payment required",
   "read_first": "This is a free quote for a revision of this node's earlier work, verified from the receipt. Nothing is charged until the invoice is paid; with the paid credential the same brief and prior start the job.",
   "quote": {
-    "sats": 800,
+    "sats": 1000,
     "length": "short",
     "max_chars": 3000,
     "format": "prose",
@@ -22,15 +22,15 @@ expect:
     "sources": [
       { "asset_id": "asset_log1923", "title": "Keeper's log, Glasswing Light, 1923", "answer_sats": 96 }
     ],
-    "why": "A revision costs 40% of the original job (2,000 sats) and is not refloored. The receipt verified against this node's key; the earlier job itself is no longer held."
+    "why": "A revision costs 40% of the original job (2,000 sats): 800, raised to the network minimum of 1,000. The receipt verified against this node's key; the earlier job itself is no longer held."
   },
-  "invoice": "lnbc8u1p5evalmockpp5revisionmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmock",
-  "payment_uri": "lightning:lnbc8u1p5evalmockpp5revisionmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmock",
-  "payment_page": "https://panscia.com/network/pay#lnbc8u1p5evalmockpp5revisionmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmock",
+  "invoice": "lnbc10u1p5evalmockpp5revisionmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmock",
+  "payment_uri": "lightning:lnbc10u1p5evalmockpp5revisionmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmock",
+  "payment_page": "https://panscia.com/network/pay#lnbc10u1p5evalmockpp5revisionmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmockmock",
   "invoiceId": "inv_mock_work_rev_3c7e",
-  "amount": 800,
+  "amount": 1000,
   "currency": "sat",
-  "total_sat": 800,
+  "total_sat": 1000,
   "expires_in": 7200,
   "instructions": "Pay the Lightning invoice, then call request_work again with the same brief and prior and this invoice_id; the node accepts the revision and returns a job_id to check. If you cannot pay it yourself, give the buyer `payment_page` and say the price. If they have no wallet at all, point them at `no_wallet`.",
   "no_wallet": "https://panscia.com/network/paying",

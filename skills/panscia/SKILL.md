@@ -178,7 +178,9 @@ job, 100,000 on standard or long); above it each 50,000 characters adds a
 small network step to the quote, and `quote.input` shows what was counted.
 No job reads more than 200,000 / 400,000 / 500,000 characters. The node
 reads inputs as the client's material, may quote them freely, and holds
-them only for the job. A revision takes new inputs the same way.
+them only for the job. A revision takes new inputs the same way, and does
+not reread the original job's inputs: send again whatever the change
+depends on.
 
 **Flow.** `request_work` with the brief → 402 with the quote and an
 invoice. Pay. `request_work` again with the same brief, format and length
@@ -190,6 +192,14 @@ nothing: the response says `charged: false` and the credential is good
 again. Rendering — a PDF, a slide, a PNG — is your job afterwards, from what
 the node delivers.
 
+**Length.** Work is never cut. A deliverable may run a little past the
+length bought so that its thought can finish (the quote's `grace_chars`).
+Work the node cannot fit or finish within that is not delivered: the job
+fails with `needs_longer` and names the `next_length`. The same request
+would meet the same limit, so do not simply retry it. Tell the person the
+work did not fit, get the quote at that length (or narrow the brief), and
+confirm that price with them before anything more is paid.
+
 **What it is not.** A deliverable is written from the sources, not made of
 them: a small fixed share of it at most may be verbatim, and the node
 checks. A brief that asks for the files, the catalogue, the node's
@@ -200,12 +210,26 @@ certification; where a task needs a licensed professional the deliverable
 says so, and the person judges it before relying on it.
 
 **Revisions.** A change to delivered work costs a fixed share of the
-original. Give `parent_job_id` while the node still remembers the job, or
-the delivery's `receipt` together with the deliverable text as `prior`
-after it has forgotten: the receipt is signed by the node and proves it
-wrote the earlier work. Keep the receipt with the deliverable. `forget_work`
-asks the node to drop a job's full memory early; it keeps a summary as its
-own experience, and the node forgets on its own after its retention period.
+original, never below the network minimum. Give `parent_job_id` while the
+node still remembers the job, or the delivery's `receipt` together with the
+deliverable text as `prior` after it has forgotten: the receipt is signed
+by the node and proves it wrote the earlier work. Keep the receipt with the
+deliverable. A revision is its own job, with its own `job_id`, credential
+and receipt.
+
+**Forgetting.** A node drops a job's deliverable and inputs on its own
+after its retention period (30 days by default; `held_until` on the
+delivery gives the date) and keeps only a summary, the brief and the
+sources it used, as its own experience. `forget_work` asks for that early,
+for one named job. The original and each revision are separate jobs:
+forgetting one leaves the others, and the answer's `still_held` lists what
+the node still holds of the same work. So be specific. When the person asks
+the node to forget their work and more than one job exists, ask which: the
+original, a given revision, or all of them. Then forget each job they
+named, with the credential that paid for it, and tell them what is still
+held and until when. Only forget work that has been fetched with
+`check_work` and is kept with its receipt: the node refuses otherwise, and
+a deliverable the person has not received is not yours to have dropped.
 
 ## Paying
 
@@ -320,5 +344,5 @@ not what you hoped for. A report is a legal signal, not a review.
 | `download_asset` | paid | Retrieve it with L402 credentials |
 | `request_work` | free to quote, paid to run | Commission a deliverable written by a node's model from its catalogue; the 402 carries the quote; with the paid `invoice_id`, a `job_id` — only after the person agreed to the price |
 | `check_work` | — | The state or the result of a work job, with the credential that paid for it; waits for a running job |
-| `forget_work` | — | Ask the node to drop a job's full memory early |
+| `forget_work` | — | Ask the node to drop one named job's deliverable and inputs early, once fetched; the original and each revision separately |
 | `report_node` | free | Misrepresented **and** apparently illegal content |

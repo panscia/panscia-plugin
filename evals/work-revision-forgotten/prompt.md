@@ -1,6 +1,6 @@
 ---
 description: The user holds a deliverable and its signed receipt from a work job the node has since forgotten, and wants a revision quoted. The plugin should learn (or know from the skill) that the job is gone, send the receipt and the deliverable as `prior` with the change as the brief, and report the revision price rather than re-commissioning at full price or paying anything.
-expected_outcome: Calls request_work with `prior` carrying the receipt and the deliverable text and a brief describing the cut; reports the 800-sat revision quote (40% of the original 2,000) and the payment page; does not pay, does not call licence_asset; may offer to make the cut itself since the text belongs to the user.
+expected_outcome: Calls request_work with `prior` carrying the receipt and the deliverable text and a brief describing the cut; reports the 1,000-sat revision quote (40% of the original 2,000, raised to the network minimum) and the payment page; does not pay, does not call licence_asset; may offer to make the cut itself since the text belongs to the user.
 tags: [work, revision, receipt]
 runs: 3
 max_turns: 14
