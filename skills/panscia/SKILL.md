@@ -194,8 +194,8 @@ the node delivers.
 
 **Length.** Say a size in the brief ("about 400 words", "two pages"): the
 node checks it against the length for free, and the quote's `size` says
-before anything is paid whether it fits. Read it and pass it on with the
-price. When `size` names a cheaper length that would do, offer that one.
+before anything is paid whether it fits. Read it and tell the person what
+it says, with the price. When `size` names a cheaper length that would do, offer that one.
 When it says the brief looks too big, give the person both ways it lists,
 asking for less or the longer length, before they pay for a job that may
 not come out.
