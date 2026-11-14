@@ -192,8 +192,16 @@ nothing: the response says `charged: false` and the credential is good
 again. Rendering — a PDF, a slide, a PNG — is your job afterwards, from what
 the node delivers.
 
-**Length.** Work is never cut. A deliverable may run a little past the
-length bought so that its thought can finish (the quote's `grace_chars`).
+**Length.** Say a size in the brief ("about 400 words", "two pages"): the
+node checks it against the length for free, and the quote's `size` says
+before anything is paid whether it fits. Read it and pass it on with the
+price. When `size` names a cheaper length that would do, offer that one.
+When it says the brief looks too big, give the person both ways it lists,
+asking for less or the longer length, before they pay for a job that may
+not come out.
+
+Work is never cut. A deliverable may run a little past the length bought
+so that its thought can finish (the quote's `grace_chars`).
 Work the node cannot fit or finish within that is not delivered: the job
 fails with `needs_longer`, and what was paid still stands. The same request
 would meet the same limit, so do not simply retry it. There are two ways
