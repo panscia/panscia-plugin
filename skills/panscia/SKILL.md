@@ -195,10 +195,20 @@ the node delivers.
 **Length.** Work is never cut. A deliverable may run a little past the
 length bought so that its thought can finish (the quote's `grace_chars`).
 Work the node cannot fit or finish within that is not delivered: the job
-fails with `needs_longer` and names the `next_length`. The same request
-would meet the same limit, so do not simply retry it. Tell the person the
-work did not fit, get the quote at that length (or narrow the brief), and
-confirm that price with them before anything more is paid.
+fails with `needs_longer`, and what was paid still stands. The same request
+would meet the same limit, so do not simply retry it. There are two ways
+on, and the choice is the person's, never yours:
+
+- **Narrow the brief.** Send a narrower brief at the same length and
+  format with the same `invoice_id`. It runs on what was paid; nothing more
+  is due. Say what you would leave out and let the person agree.
+- **Take the next length.** `request_work` at `next_length` with
+  `credit: { job_id, invoice_id }` of the job that did not fit. What was
+  paid counts in full and the quote asks only the difference.
+
+Put both to the person, the free one first, with the figures the failure
+gives (`options`). Do not present the longer job as the only way, and do
+not start either before they choose.
 
 **What it is not.** A deliverable is written from the sources, not made of
 them: a small fixed share of it at most may be verbatim, and the node

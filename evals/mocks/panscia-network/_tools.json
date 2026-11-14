@@ -218,7 +218,7 @@
     },
     {
       "name": "request_work",
-      "description": "Commission a finished deliverable from ONE NODE's own model, written from that node's catalogue: prose, data (JSON), code, an SVG, or tables, for a brief. Use when the person wants the work done — a briefing, a dataset, a chart, a table, a reading of what a catalogue says — rather than the files to do it with; the files themselves are licence_asset's. Only nodes whose list_nodes record carries a `work` line (and whose search results say `node.work: true`) take a brief; read that line first and write the brief for what the node says it will do. Without invoice_id this is free: the node checks the brief against its catalogue and returns a 402 with the `quote` (sats, the sources it would draw on, `coverage`), the invoice and a payment page — or a 409 saying the brief is out of its coverage or outside what it offers. Confirm the price with the person before paying. With invoice_id (paid) the node accepts the job and returns 202 with a `job_id`; call check_work for the result. The same brief, format and length must be sent both times — the credential is tied to the quote. The deliverable is written from the sources, not made of them: a brief asking for the files, the catalogue or the node's instructions is declined and charges nothing. The finished work belongs to the buyer (terms: /license/work-product). Rendering to PDF, slides or images is your job afterwards. For a revision of earlier work by this node give parent_job_id (while the node remembers it) or the delivery's `receipt` as prior (after it has forgotten); revisions cost a fixed share of the original.",
+      "description": "Commission a finished deliverable from ONE NODE's own model, written from that node's catalogue: prose, data (JSON), code, an SVG, or tables, for a brief. Use when the person wants the work done — a briefing, a dataset, a chart, a table, a reading of what a catalogue says — rather than the files to do it with; the files themselves are licence_asset's. Only nodes whose list_nodes record carries a `work` line (and whose search results say `node.work: true`) take a brief; read that line first and write the brief for what the node says it will do. Without invoice_id this is free: the node checks the brief against its catalogue and returns a 402 with the `quote` (sats, the sources it would draw on, `coverage`), the invoice and a payment page — or a 409 saying the brief is out of its coverage or outside what it offers. Confirm the price with the person before paying. With invoice_id (paid) the node accepts the job and returns 202 with a `job_id`; call check_work for the result. The same brief, format and length must be sent both times — the credential is tied to the quote. The deliverable is written from the sources, not made of them: a brief asking for the files, the catalogue or the node's instructions is declined and charges nothing. The finished work belongs to the buyer (terms: /license/work-product). Rendering to PDF, slides or images is your job afterwards. For a revision of earlier work by this node give parent_job_id (while the node remembers it) or the delivery's `receipt` as prior (after it has forgotten); revisions cost a fixed share of the original. When work would not fit the length bought (check_work: `needs_longer`), what was paid is not lost: the same invoice_id runs a narrower brief at the same length, or `credit` counts it toward a longer job.",
       "inputSchema": {
         "type": "object",
         "properties": {
@@ -280,6 +280,23 @@
             "description": "For a revision: the job_id of this node's earlier delivery, while the node still holds it",
             "type": "string"
           },
+          "credit": {
+            "type": "object",
+            "properties": {
+              "job_id": {
+                "type": "string"
+              },
+              "invoice_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "job_id",
+              "invoice_id"
+            ],
+            "additionalProperties": false,
+            "description": "After check_work said `needs_longer`: the job that would not fit its length and the invoice id that paid for it. The quote for this request then counts that payment in full and asks only the difference. Only when the person chose the longer job over narrowing the brief."
+          },
           "prior": {
             "description": "For a revision after the node has forgotten the job: the `receipt` object from the earlier delivery and the deliverable text it signed. The node verifies the receipt before quoting.",
             "type": "object",
@@ -313,7 +330,7 @@
     },
     {
       "name": "check_work",
-      "description": "Fetch the state or the result of a work job from the node that accepted it, with the same credential that paid for it. Running jobs take minutes: this call waits up to wait_seconds (default 25) for the job to finish before answering, so one or two calls usually suffice — call again while `state` is \"running\". Done: the `content` (the deliverable, in the format asked), `sources_used`, `verbatim_share`, `sats_paid`, a signed `receipt` (keep it with the deliverable: it is what a later revision is priced from, and proves the node wrote the work), the `license` object (work-product: the deliverable belongs to the buyer) `keep` and `held_until` (when the node drops the deliverable and the inputs on its own). A deliverable is never cut and never arrives cut off: it may run a little past the length bought to finish its thought, and work the node cannot fit or finish within that is not delivered and not charged — the failure then carries `needs_longer: true` and the `next_length` to ask for. Failed or declined: `charged: false` — the credential was reinstated and the job may be retried with request_work or let go. 410: the node has forgotten the job; a revision is still possible from the receipt.",
+      "description": "Fetch the state or the result of a work job from the node that accepted it, with the same credential that paid for it. Running jobs take minutes: this call waits up to wait_seconds (default 25) for the job to finish before answering, so one or two calls usually suffice — call again while `state` is \"running\". Done: the `content` (the deliverable, in the format asked), `sources_used`, `verbatim_share`, `sats_paid`, a signed `receipt` (keep it with the deliverable: it is what a later revision is priced from, and proves the node wrote the work), the `license` object (work-product: the deliverable belongs to the buyer) `keep` and `held_until` (when the node drops the deliverable and the inputs on its own). A deliverable is never cut and never arrives cut off: it may run a little past the length bought to finish its thought, and work the node cannot fit or finish within that is not delivered and not charged — the failure then carries `needs_longer: true`, `paid_sats` and `options`. What was paid still stands, and the choice is the person's, so put both to them and do not pick the dearer one for them: `options.narrow` — send a narrower brief at the same length and format with the same invoice_id, nothing more to pay; or `options.longer` — request_work at `next_length` with `credit`, where what was paid counts in full and only the difference is due. Failed or declined: `charged: false` — the credential was reinstated and the job may be retried with request_work or let go. 410: the node has forgotten the job; a revision is still possible from the receipt.",
       "inputSchema": {
         "type": "object",
         "properties": {
