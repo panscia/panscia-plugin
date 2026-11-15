@@ -1,6 +1,6 @@
 {
   "name": "panscia",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "description": "Search a network of independently owned catalogues \u2014 documents, images, audio and video that their owners publish and sell, and that is not on the public web. Searching is free; asking a node a question or licensing a file for a task is paid per request over Lightning. Payment grants a single-task licence; the owner keeps all rights.",
   "author": {
     "name": "Panscia",
@@ -28,7 +28,7 @@
     "brandColor": "#FFB000",
     "brandColorDark": "#FFB000",
     "logo": "./assets/logo.png",
-    "composerIcon": "./assets/composer-icon.svg",
+    "composerIcon": "./assets/composer-icon.png",
     "capabilities": [],
     "screenshots": [],
     "defaultPrompt": [
