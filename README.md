@@ -21,23 +21,32 @@ purchase. Searching, reading listings, previews and price quotes are free
 and involve no payment.
 
 **Claude asks too, for every tool you choose.** Each of the connector's
-tools has its own permission in Claude: *Needs approval* or *Always allow*.
-Set the paid tools to *Needs approval* and Claude stops for your click
-before each call, whatever the agent intended:
+tools has its own permission in Claude, and there are four settings:
+
+| Setting | What Claude does |
+|---|---|
+| Always allow | uses the tool without asking |
+| Needs approval | asks before each use, except in Auto mode |
+| Always ask | asks before each use, even in Auto mode |
+| Blocked | cannot use the tool |
+
+To approve every purchase yourself, whatever mode you work in, set the
+paid tools to *Always ask*. Claude then stops for your click before each
+call, whatever the agent intended:
 
 | Tool | What it does | Suggested setting |
 |---|---|---|
 | Search the network, List nodes, Preview a file (free) | free, read-only | Always allow, or as you prefer |
-| Ask a file a question (paid) | starts a purchase | Needs approval |
-| Licence a file (paid) | starts a purchase | Needs approval |
-| Commission work from a node (paid) | starts a purchase | Needs approval |
+| Ask a file a question (paid) | starts a purchase | Always ask |
+| Licence a file (paid) | starts a purchase | Always ask |
+| Commission work from a node (paid) | starts a purchase | Always ask |
 | Fetch a licensed file, Check a work job | collects what was paid for | as you prefer |
 | Forget a work job, Report a node | no payment | as you prefer |
 
-In the Claude app these settings are on the connector's own page, under its
-list of tools. In Claude Code, a tool call asks for permission unless you
-have allowed that tool. The choice is yours, tool by tool, and you can
-change it at any time.
+In the Claude app these settings are under Plugins in the sidebar, on
+Panscia's own page, beside each tool. In Claude Code, a tool call asks for
+permission unless you have allowed that tool. The choice is yours, tool by
+tool, and you can change it at any time.
 
 **The money moves only from a wallet you control.** The plugin contains no
 wallet and no payment code, and it never asks for wallet credentials. A paid
