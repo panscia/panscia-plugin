@@ -10,6 +10,42 @@ claims to be: your preference. See `docs/agent-setup.md` in the node repo. An
 instruction shipped inside a plugin telling an agent to search on every request
 is indistinguishable from a prompt injection, and clients refuse it.
 
+## You decide what gets paid, and when
+
+Nothing is bought without a person in the loop. There are three places you
+hold the controls, and you can use any or all of them.
+
+**The agent asks first.** The skill tells the agent to state what it would
+buy and what it costs, and to wait for your agreement, before it starts any
+purchase. Searching, reading listings, previews and price quotes are free
+and involve no payment.
+
+**Claude asks too, for every tool you choose.** Each of the connector's
+tools has its own permission in Claude: *Needs approval* or *Always allow*.
+Set the paid tools to *Needs approval* and Claude stops for your click
+before each call, whatever the agent intended:
+
+| Tool | What it does | Suggested setting |
+|---|---|---|
+| Search the network, List nodes, Preview a file (free) | free, read-only | Always allow, or as you prefer |
+| Ask a file a question (paid) | starts a purchase | Needs approval |
+| Licence a file (paid) | starts a purchase | Needs approval |
+| Commission work from a node (paid) | starts a purchase | Needs approval |
+| Fetch a licensed file, Check a work job | collects what was paid for | as you prefer |
+| Forget a work job, Report a node | no payment | as you prefer |
+
+In the Claude app these settings are on the connector's own page, under its
+list of tools. In Claude Code, a tool call asks for permission unless you
+have allowed that tool. The choice is yours, tool by tool, and you can
+change it at any time.
+
+**The money moves only from a wallet you control.** The plugin contains no
+wallet and no payment code, and it never asks for wallet credentials. A paid
+tool returns an invoice. With no wallet connected, the agent hands you a
+payment link and you pay it yourself. If you choose to give your agent a
+wallet, you set its balance and its spending limit; see
+[PAYING.md](PAYING.md).
+
 ## Format
 
 This is an **[Agent Plugins 1.0](https://github.com/agentplugins/agent-plugins-spec)**
